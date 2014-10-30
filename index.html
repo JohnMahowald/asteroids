@@ -1,22 +1,34 @@
 <html>
   <head>
     <link rel="stylesheet" type="text.css" href="css/main.css">
+    <script type="text/javascript" src="lib/keymaster.js"></script>
     <script type="text/javascript" src="lib/utils.js"></script>
     <script type="text/javascript" src="lib/movingObject.js"></script>
     <script type="text/javascript" src="lib/asteroid.js"></script>  
+    <script type="text/javascript" src="lib/ships.js"></script>    
     <script type="text/javascript" src="lib/game.js"></script>
     <script type="text/javascript" src="lib/bullet.js"></script>
-    <script type="text/javascript" src="lib/ships.js"></script>
     <script type="text/javascript" src="lib/gameView.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    
-    <canvas id='game-canvas'></canvas>
+    <main class='game-display'>
+      <h1>Asteroids</h1>
+      <div class='window-container'>
+        <canvas id='game-canvas'></canvas>
+        <div class='score game-data'>
+          Score: <span id='score-count'>0</span>
+        </div>
+        <div class='lives game-data'>
+          Lives: <span id='life-count'>3</span>
+        </div>
+      </div>
+    </main>
     
     <script>
       var canvasEl = document.getElementById("game-canvas");
-      canvasEl.height = window.innerHeight / 1.2;
-      canvasEl.width = window.innerWidth / 1.3;
+      canvasEl.height = window.innerHeight;
+      canvasEl.width = window.innerWidth;
       new window.Asteroids.GameView(canvasEl).start();
     </script>
     
