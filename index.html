@@ -1,6 +1,9 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text.css" href="css/main.css">
+    <title>Asteroids</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">    
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="lib/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="lib/keymaster.js"></script>
     <script type="text/javascript" src="lib/utils.js"></script>
     <script type="text/javascript" src="lib/movingObject.js"></script>
@@ -22,6 +25,33 @@
         <div class='lives game-data'>
           Lives: <span id='life-count'>3</span>
         </div>
+        
+        <div class='game-buttons active'>
+          
+          <a href="#" class='play button'>Play</a>
+          <a href="#" class="instructions button">
+            <span>Instructions</span>            
+            <div class='instructions-container'>
+              <div class='arrows-container clearfix'>
+                <div class='arrows'>
+                  <img src='img/arrow.svg' id='up'>
+                  <img src='img/arrow.svg' id='down'>
+                  <span>Ship Thrusters</span>
+                </div>
+            
+                <div class='arrows'>
+                  <img src='./img/arrow.svg' id='left'>
+                  <img src='./img/arrow.svg' id='right'>
+                  <span>Ship Direction</span>              
+                </div>
+              </div>
+              <div class='shoot'>
+                <div class='space-bar'>Space Bar</div>
+                Fire Bullets!
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
     </main>
     
@@ -29,7 +59,19 @@
       var canvasEl = document.getElementById("game-canvas");
       canvasEl.height = window.innerHeight;
       canvasEl.width = window.innerWidth;
-      new window.Asteroids.GameView(canvasEl).start();
+      var playButton = document.getElementsByClassName("play")[0]
+      var gameButtons = document.getElementsByClassName("game-buttons")[0]
+      
+      playButton.onclick = function() {
+        gameButtons.className = "game-buttons"
+        new window.Asteroids.GameView(canvasEl).start(); 
+      }
+      
+      var instructionButton = document.getElementsByClassName("instructions")[0]
+      
+      instructionButton.onclick = function() {
+        instructionButton.classList.toggle('open')
+      }
     </script>
     
   </body>
