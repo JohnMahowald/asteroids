@@ -26,7 +26,7 @@
           Lives: <span id='life-count'>3</span>
         </div>
         
-        <div class='game-buttons active'>
+        <div id='new-game' class='game-buttons active'>
           
           <a href="#" class='play button'>Play</a>
           <a href="#" class="instructions button">
@@ -50,7 +50,10 @@
                 Fire Bullets!
               </div>
             </div>
-          </a>
+          </a>          
+        </div>
+        <div id='restart-game' class='game-buttons'>
+          <a href='#' class='play-again active button'>Play Again?</a>
         </div>
       </div>
     </main>
@@ -59,18 +62,28 @@
       var canvasEl = document.getElementById("game-canvas");
       canvasEl.height = window.innerHeight;
       canvasEl.width = window.innerWidth;
-      var playButton = document.getElementsByClassName("play")[0]
-      var gameButtons = document.getElementsByClassName("game-buttons")[0]
-      
-      playButton.onclick = function() {
-        gameButtons.className = "game-buttons"
-        new window.Asteroids.GameView(canvasEl).start(); 
-      }
-      
+      var playButton = document.getElementsByClassName("play")[0];
+      var gameButtons = document.getElementsByClassName("game-buttons")[0];
+      var restartMenu = document.getElementById("restart-game");
       var instructionButton = document.getElementsByClassName("instructions")[0]
+      var restartButton = document.getElementsByClassName("play-again")[0];
+            
+      playButton.onclick = function() { startGame() };
       
       instructionButton.onclick = function() {
         instructionButton.classList.toggle('open')
+      }
+      
+      restartButton.onclick = function() { startGame() };
+      
+      function startGame() {
+        gameButtons.className = "game-buttons"
+        restartMenu.className = "game-buttons"
+        new window.Asteroids.GameView(canvasEl).start(); 
+      }
+      
+      function promptGameOver() {
+        restartMenu.className += " active"
       }
     </script>
     

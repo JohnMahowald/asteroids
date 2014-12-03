@@ -75,6 +75,7 @@ body {
 
 .game-buttons {
   position: absolute;
+	color: white;
   top: 15%;
   left: 15%;
   width: 70%;
@@ -83,6 +84,21 @@ body {
 
 .game-buttons.active {
   z-index: 1;
+}
+
+.high-scores {
+	width: 50%;
+	border: 1px solid white;
+	border-radius: 5px;
+	margin: 30px auto;
+	padding: 20px;
+}
+
+.high-scores>h3 {
+	font-family: 'Orbitron', Helvetica, sans-serif;
+	text-align: center;
+	margin: 0;
+	font-weight: normal;
 }
 
 .button {
@@ -176,4 +192,12 @@ body {
   border: 1px solid #cacaca;
   display: block;
   margin-bottom: 15px;
+}
+
+.play-again {
+	display: none;
+}
+
+.play-again.active {
+	display: block;
 }
